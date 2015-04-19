@@ -1,10 +1,8 @@
 var mongoose = require( 'mongoose' );
 
 /*
-
 Note:
 To this test project as it is:
-
 Start your MongoDB database.
 Start mongo.exe and do:
   use testdb
@@ -12,7 +10,6 @@ Start mongo.exe and do:
   db.testusers.insert({userName : "Henrik", email :"hsty@cphbusiness.dk",pw: "test",created : new Date()})
   db.testusers.insert({userName : "Tobias", email :"tog@cphbusiness.dk",pw: "test",created : new Date()})
   db.testusers.insert({userName : "Anders", email :"aka@cphbusiness.dk",pw: "test",created : new Date()})
-
 */
 var dbURI;
 
@@ -21,7 +18,9 @@ if( typeof global.TEST_DATABASE != "undefined" ) {
   dbURI = global.TEST_DATABASE;
 }
 else{
-  dbURI = 'mongodb://localhost/testdb';
+  //dbURI = 'mongodb://localhost/testdb';
+  //dbURI = 'mongodb://test:test@ds048537.mongolab.com:48537/testdb';
+  dbURI = 'mongodb://test:test@ds048537.mongolab.com:48537/plaul';
 }
 
 mongoose.connect(dbURI);
