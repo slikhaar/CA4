@@ -90,7 +90,7 @@ There are three kinds of tests in the seed application: Backend Unit tests (Moch
 
 ### Running Backend Unit Tests
 Run the test with:
- npm run backendtests
+ np
 Or set up a configuration in WebStorm to run the test from within the ide
 
 ### Running Frontend Unit Tests
