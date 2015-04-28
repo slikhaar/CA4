@@ -11,15 +11,11 @@ Start mongo.exe and do:
   db.testusers.insert({userName : "Tobias", email :"tog@cphbusiness.dk",pw: "test",created : new Date()})
   db.testusers.insert({userName : "Anders", email :"aka@cphbusiness.dk",pw: "test",created : new Date()})
 */
-var dbURI;
+
 
 //This is set by the backend tests
-if( typeof global.TEST_DATABASE != "undefined" ) {
-  dbURI = global.TEST_DATABASE;
-}
-else{
-  dbURI = 'mongodb://localhost/testdb';
-}
+var dbURI = 'mongodb://test:test@ds029831.mongolab.com:29831/firstdb';
+
 
 mongoose.connect(dbURI);
 
@@ -53,5 +49,19 @@ var usersSchema = new mongoose.Schema({
   created: { type: Date, default: new Date() }
 });
 
+
+var wikiSchema = mongoose.Schema({
+        title: { type: String, index: true},
+        url: { type: String},
+        abstract: { type: String},
+        categories: {type: [{type: String}], index: true},
+        links: {type: [{type: String}], index: true},
+        headings: [{heading: {type: String}, position: {type: Number}}]},
+    { collection: 'wiki' }
+);
+
+
+
 mongoose.model( 'User', usersSchema,"testusers" );
+exports.WikiModel = mongoose.model('wiki', wikiSchema);
 

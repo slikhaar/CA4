@@ -4,6 +4,9 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var user = mongoose.model('User');
 
+var wikiFacade = require("../model/wikiFacade")
+
+
 /* GET A User From The DataBase */
 router.get('/user', function(req, res) {
   if(typeof global.mongo_error !== "undefined"){
@@ -20,6 +23,17 @@ router.get('/user', function(req, res) {
     res.header("Content-type","application/json");
     res.end(JSON.stringify(users));
   });
+});
+
+router.get('/getWiki/:title', function (req, res) {
+    var title = req.params.title;
+    wikiFacade.getWiki(title, function(err, data){
+        if(err){
+            throw err;
+        }
+        res.header("content-type", "application/JSON");
+        res.send(JSON.stringify(data));
+    })
 });
 
 module.exports = router;
