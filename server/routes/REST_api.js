@@ -36,4 +36,42 @@ router.get('/getWiki/:title', function (req, res) {
     })
 });
 
+
+router.get('/findWiki/:title', function (req, res) {
+    var title = req.params.title;
+    wikiFacade.findWiki(title, function(err, data){
+        if(err){
+            throw err;
+        }
+        res.header("content-type", "application/JSON");
+        res.send(JSON.stringify(data));
+    })
+});
+
+
+
+router.get('/getCategories', function (req, res) {
+       wikiFacade.getCategories(function(err, data){
+        if(err){
+            throw err;
+        }
+        //console.log(data);
+        res.header("content-type", "application/json");
+        res.send(JSON.stringify(data));
+    })
+});
+
+
+router.get('/getWikisWithCategory/:categories', function (req, res) {
+    var categories = req.params.categories;
+    wikiFacade.getWikisWithCategory(categories, function(err, data){
+        if(err){
+            throw err;
+        }
+        res.header("content-type", "application/JSON");
+        res.send(JSON.stringify(data));
+    })
+});
+
+
 module.exports = router;
