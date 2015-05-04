@@ -63,5 +63,5 @@ var wikiSchema = mongoose.Schema({
 
 
 mongoose.model( 'User', usersSchema,"testusers" );
-exports.WikiModel = mongoose.model('wiki', wikiSchema);
+mongoose.model('wiki', wikiSchema);
 

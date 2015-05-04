@@ -13,6 +13,7 @@
     "jade": "^1.7.0",
     "mongoose": "^3.8.18",
     "morgan": "^1.3.0",
+    "request": "^2.55.0",
     "serve-favicon": "^2.1.3"
   },
   "devDependencies": {
@@ -30,7 +31,7 @@
   "scripts": {
     "pretestserver": "npm install",
     "testserver": "node ./bin/www 12345",
-    "postinstall": "bower install",
+    "postinstall": "HOME=$HOME/app-root/runtime node node_modules/bower/bin/bower install",
     "prestart": "npm install",
     "start": "node ./bin/www",
     "prebackendtests": "npm install",
